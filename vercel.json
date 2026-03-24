@@ -3,6 +3,7 @@
   "buildCommand": "ng build --configuration production",
   "outputDirectory": "dist/enterprise-invoice-frontend/browser",
   "routes": [
+    { "src": "/(.*\\.(js|css|map|ico|png|json))$", "dest": "/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
