@@ -1,8 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "dist/enterprise-invoice-frontend/**", "use": "@vercel/static" }
-  ],
+  "builds": [{ "src": "dist/enterprise-invoice-frontend/browser**", "use": "@vercel/static" }],
   "routes": [
     { "src": "/(.*\\.(js|css|map|ico|png|json))$", "dest": "/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
