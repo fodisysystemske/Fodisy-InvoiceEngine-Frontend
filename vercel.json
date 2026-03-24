@@ -1,7 +1,10 @@
 {
   "version": 2,
   "builds": [
-    { "src": "dist/my-app/**", "use": "@vercel/static" }
+    {
+      "src": "dist/enterprise-invoice-frontend/**",
+      "use": "@vercel/static"
+    }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
