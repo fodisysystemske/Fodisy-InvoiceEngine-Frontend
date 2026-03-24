@@ -1,0 +1,56 @@
+<div class="pos-modal-backdrop" *ngIf="open" (click)="close.emit()"></div>
+<div class="pos-modal-glass" *ngIf="open">
+  <div class="pos-modal-header">
+    <h2>Point of Sale</h2>
+    <button class="close-btn" (click)="close.emit()">✕</button>
+  </div>
+  <div class="pos-modal-vertical-scroll">
+    <div class="pos-modal-search">
+      <input
+        type="text"
+        [(ngModel)]="search"
+        (keyup.enter)="addProduct(search)"
+        placeholder="Scan or enter product code"
+        autofocus
+      />
+      <button (click)="addProduct(search)">Add</button>
+      <button class="null-btn" (click)="nullTransaction()">Null Transaction</button>
+    </div>
+    <div class="pos-modal-cart" *ngIf="scannedItems.length">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Barcode</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of scannedItems">
+            <td>{{ item.name }}</td>
+            <td>{{ item.code }}</td>
+            <td>{{ item.qty }}</td>
+            <td>{{ item.price | currency:'KES' }}</td>
+            <td>{{ item.price * item.qty | currency:'KES' }}</td>
+            <td><button (click)="removeItem(item.code)">✕</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="!scannedItems.length" class="empty-cart">No items scanned yet.</div>
+    <div class="pos-modal-summary" *ngIf="scannedItems.length">
+      <div>Total: <span>{{ total | currency:'KES' }}</span></div>
+      <div>VAT (16%): <span>{{ tax | currency:'KES' }}</span></div>
+      <div class="grand">Grand Total: <span>{{ grandTotal | currency:'KES' }}</span></div>
+      <button class="checkout-btn" (click)="checkout()">Checkout (MPESA)</button>
+      <div class="cash-section">
+        <label for="cashInput">Cash Paid:</label>
+        <input id="cashInput" type="number" min="0" [(ngModel)]="cashPaid" (input)="updateChange()" placeholder="Enter cash amount" />
+        <div *ngIf="cashPaid >= grandTotal">Change: <span>{{ cashPaid - grandTotal | currency:'KES' }}</span></div>
+      </div>
+    </div>
+  </div>
+</div>

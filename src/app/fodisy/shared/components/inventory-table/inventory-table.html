@@ -1,0 +1,68 @@
+<div class="inv-panel">
+  <div class="inv-head">
+    <div class="inv-title">
+      <div class="name">Inventory</div>
+      <div class="sub">Monitor stock, reorder thresholds, and pricing.</div>
+    </div>
+
+    <div class="inv-actions">
+      <div class="search">
+        <span class="search-ic">⌕</span>
+        <input
+          [ngModel]="q()"
+          (ngModelChange)="q.set($event)"
+          type="text"
+          placeholder="Search SKU, item, category…"
+          aria-label="Search inventory"
+        />
+        <button class="clear" *ngIf="q()" (click)="q.set('')" aria-label="Clear search">×</button>
+      </div>
+
+      <button class="btn ghost" (click)="add()">Add</button>
+      <button class="btn ghost" [disabled]="!selectedSku()" (click)="edit()">Update</button>
+    </div>
+  </div>
+
+  <div class="inv-table-wrap" role="region" aria-label="Inventory table">
+    <table class="inv-table">
+      <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Item</th>
+          <th>Category</th>
+          <th class="num">Unit Price</th>
+          <th class="num">In Stock</th>
+          <th class="num">Reorder</th>
+          <th>Status</th>
+          <th>Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let r of filtered(); trackBy: trackBySku"
+          (click)="select(r)"
+          [class.selected]="selectedSku() === r.sku"
+        >
+          <td class="mono">{{ r.sku }}</td>
+          <td>{{ r.name }}</td>
+          <td>{{ r.category }}</td>
+          <td class="num">{{ r.unitPrice | currency: 'KES' : 'symbol-narrow' : '1.0-0' }}</td>
+          <td class="num">{{ r.inStock }}</td>
+          <td class="num">{{ r.reorderLevel }}</td>
+          <td>
+            <span class="pill" [ngClass]="'s-' + r.state.toLowerCase()">{{ r.state }}</span>
+          </td>
+          <td>{{ r.lastUpdated | date: 'MMM d, y' }}</td>
+        </tr>
+        <tr *ngIf="filtered().length === 0">
+          <td class="empty" colspan="8">No matches.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="inv-foot">
+    <button class="btn tiny" *ngIf="selectedSku()" (click)="clearSelection()">Clear selection</button>
+  </div>
+</div>
+

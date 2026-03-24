@@ -1,0 +1,35 @@
+<div class="tw-panel">
+  <div class="tw-head">
+    <div class="tw-title">
+      <div class="name">Data Workspace</div>
+      <div class="sub">Switch between enterprise tables without leaving the dashboard.</div>
+    </div>
+
+    <div class="tw-switch" aria-label="Choose table">
+      <button class="switch-btn" type="button">
+        View: <span class="strong">{{ activeLabel() }}</span>
+        <span class="caret">▾</span>
+      </button>
+      <div class="menu" role="menu">
+        <button
+          *ngFor="let v of views"
+          type="button"
+          role="menuitem"
+          class="menu-item"
+          [class.active]="active() === v.id"
+          (click)="setActive(v.id)"
+        >
+          {{ v.label }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tw-body">
+    @switch (active()) {
+      @case ('transactions') { <app-transactions-table /> }
+      @case ('inventory') { <app-inventory-table /> }
+    }
+  </div>
+</div>
+

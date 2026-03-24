@@ -1,0 +1,33 @@
+<div class="rightpanel-glass">
+  <section class="widget calendar-section">
+    <h3>Daily Activity Record</h3>
+    <app-calendar-widget
+      [markedDates]="markedDates"
+      (dateSelected)="onDateSelected($event)"
+    ></app-calendar-widget>
+  </section>
+  <section class="widget tasks-widget">
+    <h3>Tasks</h3>
+    <div class="tasks-tabs">
+      <button [class.active]="taskTab === 'done'" (click)="setTaskTab('done')">Done</button>
+      <button [class.active]="taskTab === 'ahead'" (click)="setTaskTab('ahead')">Ahead</button>
+    </div>
+    <ul class="tasks-list" *ngIf="taskTab === 'done'">
+      <li *ngFor="let t of tasksDone">
+        <span class="tick">✔</span>
+        <span class="task-label">{{ t.label }}</span>
+        <span class="task-date">{{ t.date }}</span>
+      </li>
+    </ul>
+    <ul class="tasks-list" *ngIf="taskTab === 'ahead'">
+      <li *ngFor="let t of tasksAhead">
+        <span class="task-label">{{ t.label }}</span>
+        <span class="task-date">{{ t.date }}</span>
+      </li>
+    </ul>
+  </section>
+  <section class="widget">
+    <h3>Activity Feed</h3>
+    <p>Recent MPESA and cash events will appear here.</p>
+  </section>
+</div>

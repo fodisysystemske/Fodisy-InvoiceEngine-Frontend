@@ -1,0 +1,22 @@
+<div class="sidebar-glass">
+  <div class="sidebar-header">
+    <span class="sidebar-title">Dashboard</span>
+  </div>
+  <nav class="sidebar-nav">
+    <button class="nav-item nav-item--active">Dashboard</button>
+    <button class="nav-item">Invoices</button>
+    <button class="nav-item">Payments</button>
+    <button class="nav-item">Inventory</button>
+    <button class="nav-item">Reports</button>
+    <button class="nav-item">Analytics</button>
+    <button class="nav-item">Settings</button>
+    <button class="sidebar-btn" (click)="posModalTrigger.emit()">
+      <span class="icon">🛒</span>
+      <span>POS</span>
+    </button>
+  </nav>
+
+  <div class="sidebar-clock">
+    <app-clock-widget></app-clock-widget>
+  </div>
+</div>

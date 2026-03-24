@@ -1,0 +1,104 @@
+.pos-window-glass {
+  background: rgba(20, 30, 60, 0.98);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  max-width: 520px;
+  margin: 2rem auto;
+  color: #fff;
+  font-family: inherit;
+}
+.pos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+.pos-header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+.pos-date {
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+.pos-search {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.1rem;
+}
+.pos-search input {
+  flex: 1;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+.pos-search button {
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+.pos-cart table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.1rem;
+}
+.pos-cart th, .pos-cart td {
+  padding: 0.5rem 0.3rem;
+  text-align: left;
+}
+.pos-cart th {
+  color: #bdbdbd;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+.pos-cart td {
+  font-size: 1rem;
+}
+.pos-cart button {
+  background: none;
+  border: none;
+  color: #ff5252;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.pos-summary {
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+.pos-summary .grand {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #6c63ff;
+  margin-top: 0.4rem;
+}
+.checkout-btn {
+  margin-top: 1.2rem;
+  width: 100%;
+  background: linear-gradient(90deg, #6c63ff 60%, #00e0ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+}
+.checkout-btn:hover {
+  background: linear-gradient(90deg, #00e0ff 60%, #6c63ff 100%);
+}

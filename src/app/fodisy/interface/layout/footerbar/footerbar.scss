@@ -1,0 +1,35 @@
+.footerbar-glass {
+  height: 100%;
+  border-radius: 16px;
+  padding: 0 1.25rem;
+  background: rgba(12, 24, 70, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.payment-strip {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.pill {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.footer-center {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  opacity: 0.9;
+}
+
+.separator {
+  opacity: 0.6;
+}

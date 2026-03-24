@@ -1,0 +1,22 @@
+<div class="shell-grid">
+  <header class="topbar">
+    <app-topbar></app-topbar>
+  </header>
+
+  <aside class="sidebar">
+    <app-sidebar (posModalTrigger)="openPosModal()"></app-sidebar>
+  </aside>
+
+  <main class="workspace">
+    <router-outlet></router-outlet>
+    <app-pos-modal [open]="posModalOpen" (close)="closePosModal()"></app-pos-modal>
+  </main>
+
+  <aside class="rightpanel">
+    <app-rightpanel></app-rightpanel>
+  </aside>
+
+  <footer class="footerbar">
+    <app-footerbar></app-footerbar>
+  </footer>
+</div>

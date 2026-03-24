@@ -1,0 +1,48 @@
+<div class="pos-window-glass">
+  <div class="pos-header">
+    <h2>Point of Sale</h2>
+    <div class="pos-date">{{ posDate }}</div>
+  </div>
+  <div class="pos-search">
+    <input
+      type="text"
+      [(ngModel)]="search"
+      (keyup.enter)="addProduct(search)"
+      placeholder="Scan or enter product code or name"
+      autofocus
+    />
+    <button (click)="addProduct(search)">Add</button>
+    <button class="null-btn" (click)="nullTransaction()">Null Transaction</button>
+  </div>
+  <div class="pos-cart" *ngIf="scannedItems.length" style="max-height:220px;overflow-y:auto;">
+    <table style="font-size:10px;width:100%;">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Barcode</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of scannedItems">
+          <td>{{ item.name }}</td>
+          <td>{{ item.code }}</td>
+          <td>{{ item.qty }}</td>
+          <td>{{ item.price | currency:'KES' }}</td>
+          <td>{{ item.price * item.qty | currency:'KES' }}</td>
+          <td><button (click)="removeItem(item.code)">✕</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pos-summary" *ngIf="scannedItems.length" style="font-size:10px;">
+    <div>Total: <span>{{ total | currency:'KES' }}</span></div>
+    <div>VAT (16%): <span>{{ tax | currency:'KES' }}</span></div>
+    <div class="grand">Grand Total: <span>{{ grandTotal | currency:'KES' }}</span></div>
+    <button class="checkout-btn" (click)="checkout()" style="font-size:10px;">Checkout (MPESA)</button>
+  </div>
+  <div *ngIf="!scannedItems.length" class="empty-cart" style="font-size:10px;text-align:center;margin-top:2rem;">No items scanned yet.</div>
+</div>

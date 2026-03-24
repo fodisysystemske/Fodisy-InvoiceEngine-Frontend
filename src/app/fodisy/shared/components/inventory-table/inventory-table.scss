@@ -1,0 +1,195 @@
+.inv-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 0;
+}
+
+.inv-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.inv-title .name {
+  font-weight: 750;
+  letter-spacing: 0.01em;
+}
+
+.inv-title .sub {
+  margin-top: 0.25rem;
+  font-size: 0.82rem;
+  opacity: 0.75;
+}
+
+.inv-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.search-ic {
+  opacity: 0.75;
+  font-size: 0.95rem;
+}
+
+.search input {
+  width: 260px;
+  max-width: 52vw;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: inherit;
+  font-size: 0.85rem;
+}
+
+.clear {
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.btn {
+  border: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.85rem;
+  color: inherit;
+  transition: transform 0.12s ease, background 0.18s ease, opacity 0.18s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.btn.ghost {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn.tiny {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.inv-table-wrap {
+  border-radius: 16px;
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.12);
+  min-height: 0;
+  flex: 1;
+}
+
+.inv-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.86rem;
+}
+
+.inv-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  text-align: left;
+  padding: 0.75rem 0.85rem;
+  background: rgba(10, 20, 60, 0.78);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-weight: 650;
+  opacity: 0.92;
+  white-space: nowrap;
+}
+
+.inv-table tbody td {
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
+}
+
+.inv-table tbody tr {
+  cursor: pointer;
+  transition: background 0.16s ease;
+}
+
+.inv-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.inv-table tbody tr.selected {
+  background: linear-gradient(90deg, rgba(0, 224, 255, 0.12), rgba(124, 92, 255, 0.1));
+}
+
+.mono {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.03em;
+  opacity: 0.95;
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 650;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.s-ok {
+  border-color: rgba(112, 255, 188, 0.22);
+  background: rgba(112, 255, 188, 0.1);
+}
+
+.s-low {
+  border-color: rgba(255, 190, 120, 0.22);
+  background: rgba(255, 190, 120, 0.1);
+}
+
+.s-out {
+  border-color: rgba(255, 90, 120, 0.25);
+  background: rgba(255, 90, 120, 0.12);
+}
+
+.empty {
+  text-align: center;
+  opacity: 0.75;
+  padding: 1.25rem 0.85rem !important;
+}
+
+.inv-foot {
+  display: flex;
+  justify-content: flex-end;
+}
+

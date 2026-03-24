@@ -1,0 +1,42 @@
+<div class="chart">
+  <div class="meta">
+    <div class="title">Revenue Overview</div>
+    <div class="sub">Last 6 months</div>
+  </div>
+
+  <div class="canvas">
+    <svg viewBox="0 0 100 100" class="svg" aria-label="Revenue overview chart">
+      <!-- grid -->
+      <g class="grid">
+        <line x1="10" y1="25" x2="92" y2="25" />
+        <line x1="10" y1="45" x2="92" y2="45" />
+        <line x1="10" y1="65" x2="92" y2="65" />
+        <line x1="10" y1="85" x2="92" y2="85" />
+      </g>
+
+      <!-- bars -->
+      <g>
+        <rect
+          *ngFor="let p of points(); let i = index"
+          class="bar"
+          [attr.x]="p.x - 4.2"
+          [attr.y]="p.y"
+          [attr.width]="8.4"
+          [attr.height]="85 - p.y"
+          [style.animationDelay.ms]="i * 45"
+        />
+      </g>
+
+      <!-- line -->
+      <polyline class="line" [attr.points]="polyline()" />
+      <g>
+        <circle *ngFor="let p of points()" class="dot" [attr.cx]="p.x" [attr.cy]="p.y" r="1.6" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="labels" aria-hidden="true">
+    <span *ngFor="let d of data">{{ d.month }}</span>
+  </div>
+</div>
+

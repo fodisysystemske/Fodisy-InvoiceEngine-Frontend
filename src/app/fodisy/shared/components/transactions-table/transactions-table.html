@@ -1,0 +1,83 @@
+<div class="tx-panel">
+  <div class="tx-head">
+    <div class="tx-title">
+      <div class="name">Recent Transactions</div>
+      <div class="sub">Search, review, and manage transaction records safely.</div>
+    </div>
+
+    <div class="tx-actions">
+      <div class="search">
+        <span class="search-ic">⌕</span>
+        <input
+          [ngModel]="q()"
+          (ngModelChange)="q.set($event)"
+          type="text"
+          placeholder="Search invoice, client, status…"
+          aria-label="Search transactions"
+        />
+        <button class="clear" *ngIf="q()" (click)="q.set('')" aria-label="Clear search">×</button>
+      </div>
+
+      <button class="btn ghost" (click)="add()">Add</button>
+      <button class="btn ghost" [disabled]="!canEdit()" [title]="canEdit() ? 'Edit selected' : 'Select an unlocked non-completed row'" (click)="edit()">
+        Update
+      </button>
+      <button class="btn danger" [disabled]="!canDelete()" [title]="canDelete() ? 'Delete selected (pending only)' : 'Only pending + unlocked can be deleted'" (click)="remove()">
+        Delete
+      </button>
+    </div>
+  </div>
+
+  <div class="tx-table-wrap" role="region" aria-label="Transactions table">
+    <table class="tx-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Transaction</th>
+          <th>Invoice #</th>
+          <th>Client</th>
+          <th class="num">Amount</th>
+          <th>Method</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let r of filtered(); trackBy: trackById"
+          (click)="select(r)"
+          [class.selected]="selectedId() === r.id"
+        >
+          <td>{{ r.date | date: 'MMM d, y, h:mm a' }}</td>
+          <td class="mono">{{ r.id }}</td>
+          <td class="mono">{{ r.invoiceNumber }}</td>
+          <td>{{ r.client }}</td>
+          <td class="num">
+            {{ r.amount | currency: 'KES' : 'symbol-narrow' : '1.0-0' }}
+          </td>
+          <td>
+            <span class="chip" [ngClass]="'m-' + r.method.toLowerCase()">{{ r.method }}</span>
+          </td>
+          <td>
+            <span class="pill" [ngClass]="'s-' + r.status.toLowerCase()">{{ r.status }}</span>
+            <span class="lock" *ngIf="r.isLocked" title="Locked invoice">🔒</span>
+          </td>
+        </tr>
+        <tr *ngIf="filtered().length === 0">
+          <td class="empty" colspan="7">No matches.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tx-foot">
+    <div class="hint">
+      Rule-aware UI:
+      <span class="dot"></span>
+      Completed/locked items can’t be edited.
+      <span class="dot"></span>
+      Only pending + unlocked items can be deleted.
+    </div>
+    <button class="btn tiny" *ngIf="selectedId()" (click)="clearSelection()">Clear selection</button>
+  </div>
+</div>
+

@@ -1,0 +1,34 @@
+<div class="donut">
+  <div class="meta">
+    <div class="title">Payment Distribution</div>
+    <div class="sub">By method</div>
+  </div>
+
+  <div class="wrap">
+    <svg viewBox="0 0 120 120" class="svg" aria-label="Payment distribution donut">
+      <g transform="translate(60 60)">
+        <ng-container *ngFor="let a of arcs()">
+          <circle
+            r="38"
+            cx="0"
+            cy="0"
+            class="ring"
+            [attr.stroke]="a.color"
+            [attr.stroke-dasharray]="(a.value / total()) * 238.76 + ' ' + 238.76"
+            [attr.stroke-dashoffset]="-(a.start / 360) * 238.76"
+            transform="rotate(-90)"
+          />
+        </ng-container>
+        <circle r="26" cx="0" cy="0" class="hole" />
+      </g>
+    </svg>
+  </div>
+  <div class="legend legend-bottom">
+    <div *ngFor="let s of slices" class="item">
+      <span class="sw" [style.background]="s.color"></span>
+      <span class="lab">{{ s.label }}</span>
+      <span class="val">{{ s.value }}%</span>
+    </div>
+  </div>
+</div>
+

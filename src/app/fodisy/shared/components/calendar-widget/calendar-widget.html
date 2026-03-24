@@ -1,0 +1,18 @@
+<div class="calendar-widget">
+  <div class="calendar-header">
+    <button (click)="prevMonth()" class="nav-btn">&#8592;</button>
+    <span class="month-label">{{ today.toLocaleString('default', { month: 'short' }) }} {{ selectedYear }}</span>
+    <button (click)="nextMonth()" class="nav-btn">&#8594;</button>
+  </div>
+  <div class="calendar-grid">
+    <div class="calendar-day" *ngFor="let d of ['S','M','T','W','T','F','S']">{{ d }}</div>
+    <div *ngFor="let _ of [].constructor(firstDay)"></div>
+    <div *ngFor="let day of monthDates" class="calendar-date" [ngStyle]="{'background': day.color || 'transparent'}" (click)="selectDate(day.date)">
+      <span class="date-num">{{ day.date.split('-')[2] }}</span>
+    </div>
+  </div>
+  <div class="calendar-activity" *ngIf="selectedDate && markedDates[selectedDate]">
+    <div class="activity-label">Activity:</div>
+    <div class="activity-detail">{{ markedDates[selectedDate].activity }}</div>
+  </div>
+</div>
