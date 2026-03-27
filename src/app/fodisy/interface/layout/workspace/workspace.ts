@@ -8,6 +8,7 @@ import { MetricWidget } from '../../../shared/components/metric-widget/metric-wi
 import { TableWorkspace } from '../../../shared/components/table-workspace/table-workspace';
 import { PaymentDistributionChart } from '../../../shared/components/payment-distribution-chart/payment-distribution-chart';
 import { RevenueOverviewChart } from '../../../shared/components/revenue-overview-chart/revenue-overview-chart';
+constructor(private supabaseService: SupabaseService) {}
 
 @Component({
   selector: 'app-workspace',
