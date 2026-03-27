@@ -5,7 +5,7 @@ import { Topbar } from '../topbar/topbar';
 import { Sidebar } from '../sidebar/sidebar';
 import { Rightpanel } from '../rightpanel/rightpanel';
 import { Footerbar } from '../footerbar/footerbar';
-constructor(private supabaseService: SupabaseService) {}
+
 
 @Component({
   selector: 'app-app-shell',

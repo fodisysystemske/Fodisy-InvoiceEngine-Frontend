@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalendarWidgetComponent } from '../../../shared/components/calendar-widget/calendar-widget';
-
 @Component({
   selector: 'app-rightpanel',
   standalone: true,
